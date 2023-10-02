@@ -1,0 +1,33 @@
+@startuml
+
+class AppData {
+    - String[] header
+    - int[][] data
+    + AppData()
+    + AppData(String[], int[][])
+    + toString(): String
+    + getHeader(): String[]
+    + getData(): int[][]
+}
+
+class MyReader {
+    + readCsvFile(String): AppData
+    - getDataInt(ArrayList<String[]>): int[][]
+}
+
+class MyWriter {
+    + saveInCsvFile(String[], int[][])
+    + saveInCsvFile(AppData)
+}
+
+class Main {
+    + main(String[])
+}
+
+AppData --> MyReader
+AppData --> MyWriter
+Main --> MyReader
+Main --> MyWriter
+Main --> AppData
+
+@enduml
